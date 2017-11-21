@@ -6,9 +6,9 @@ class NewsEntry::Authored::Create
 
     if news_entry.persisted?
       context.news_entry = news_entry
-      context.flash_message = { notice: "News created successfully" }
+      context.flash_message = { success: "News created successfully" }
     else
-      context.flash_message = { alert: "Creation failed" }
+      context.flash_message = { error: "Creation failed" }
       context.fail!
     end
   end

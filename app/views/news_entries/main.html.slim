@@ -1,4 +1,7 @@
-div Текущая главная новость
-div = @main_news_entry.title
-div = @main_news_entry.annotation
-div = @main_news_entry.published_at
+h3 Current main news entry
+div class="col-md-3"
+div class="col-md-6 current_main_news_entry"
+  p id="title" = @main_news_entry.title
+  p id="annotation" = @main_news_entry.annotation
+  p id="published_at" = @main_news_entry.published_at
+div class="col-md-3"

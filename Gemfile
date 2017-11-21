@@ -32,6 +32,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'interactor', '~> 3.0'
 gem 'slim-rails'
 
+gem 'jquery-rails'
+gem 'bootstrap-sass'
+
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

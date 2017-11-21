@@ -1,14 +1,40 @@
-= form_for @authored_news_entry, url: admin_path do |f|
-  - unless @authored_news_entry.new_record?
-    = f.hidden_field :id
-  = f.label :title
-  = f.text_field :title
-  = f.label :body
-  = f.text_area :annotation
-  = f.label :unpublish_at
-  = f.text_field :unpublish_at
+div class="row"
+  div class="col-md-12 col-sm-6 col-xs-12"
+    div class="panel panel-default"
+      div class="panel-heading clearfix"
+        i class="icon-calendar"
+        h3 class="panel-title" Authored news entry
 
-  - if @authored_news_entry.new_record?
-    = f.submit t('create')
-  - else
-    = f.submit t('save')
+      div class="panel-body"
+
+        = form_for @authored_news_entry, url: admin_path, html: { class: "form-horizontal row-border" } do |f|
+          - unless @authored_news_entry.new_record?
+            = f.hidden_field :id
+
+          div class="form-group"
+            = f.label :title, class: "col-md-2 control-label"
+            div class="col-md-10"
+              = f.text_field :title, class: "form-control"
+
+          div class="form-group"
+            = f.label :annotation, class: "col-md-2 control-label"
+            div class="col-md-10"
+              = f.text_area :annotation, class: "form-control", rows: 5
+
+          div class="form-group"
+            = f.label :unpublish_at, class: "col-md-2 control-label"
+            div class="col-md-10"
+              div class='input-group date' id='datetimepicker1'
+                = f.text_field :unpublish_at, class: "form-control"
+                span class="input-group-addon"
+                  span class="glyphicon glyphicon-calendar"
+
+              javascript:
+                  $(function () {
+                      $('#datetimepicker1').datetimepicker();
+                  });
+
+          - if @authored_news_entry.new_record?
+            = f.submit t('create')
+          - else
+            = f.submit t('save')
