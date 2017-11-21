@@ -1,0 +1,14 @@
+= form_for @authored_news_entry, url: admin_path do |f|
+  - unless @authored_news_entry.new_record?
+    = f.hidden_field :id
+  = f.label :title
+  = f.text_field :title
+  = f.label :body
+  = f.text_area :annotation
+  = f.label :unpublish_at
+  = f.text_field :unpublish_at
+
+  - if @authored_news_entry.new_record?
+    = f.submit t('create')
+  - else
+    = f.submit t('save')

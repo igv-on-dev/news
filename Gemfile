@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 
 
 gem 'interactor', '~> 3.0'
+gem 'slim-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
