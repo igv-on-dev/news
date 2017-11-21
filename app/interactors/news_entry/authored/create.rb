@@ -1,0 +1,4 @@
+class AuthoredNewsEntry::Create
+
+
+end

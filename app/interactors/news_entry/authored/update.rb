@@ -1,0 +1,3 @@
+class AuthoredNewsEntry::Update
+
+end
