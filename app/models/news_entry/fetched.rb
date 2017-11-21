@@ -1,0 +1,1 @@
+class NewsEntry::Fetched < NewsEntry; end

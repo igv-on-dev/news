@@ -1,2 +1,1 @@
-class NewsEntry < ApplicationRecord
-end
+class NewsEntry < ApplicationRecord; end

@@ -1,2 +1,1 @@
-class NewsEntry::Authored < NewsEntry
-end
+class NewsEntry::Authored < NewsEntry; end
