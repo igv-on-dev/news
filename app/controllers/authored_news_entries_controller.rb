@@ -1,7 +1,6 @@
 class AuthoredNewsEntriesController < ApplicationController
   def new
-    @authored_news_entry = NewsEntryFinder.active_authored_news_entry
-    @authored_news_entry ||= NewsEntry::Authored.new
+    @authored_news_entry = active_authored_news_entry || NewsEntry::Authored.new
   end
 
   def create
@@ -27,5 +26,10 @@ class AuthoredNewsEntriesController < ApplicationController
 
   def news_entry_id
     params.require(:news_entry_authored).require(:id)
+  end
+
+  def active_authored_news_entry
+    new_entry = NewsEntryFinder.active_authored_news_entry
+    new_entry ? new_entry.decorate : nil
   end
 end

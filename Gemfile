@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 
 
 gem 'interactor', '~> 3.0'
+gem 'draper'
+
 gem 'slim-rails'
 
 gem 'jquery-rails'
