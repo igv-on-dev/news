@@ -16,5 +16,6 @@ module TestTask
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = "Moscow"
+    config.action_cable.mount_path = "/websocket"
   end
 end
