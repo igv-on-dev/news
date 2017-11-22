@@ -1,7 +1,12 @@
-h3 Current main news entry
+h3 Current main news
 div class="col-md-3"
-div class="col-md-6 current_main_news_entry"
+div class="col-md-6 current-main-news-entry"
   p id="title" = @main_news_entry.title
   p id="annotation" = @main_news_entry.annotation
   p id="published_at" = @main_news_entry.published_at
 div class="col-md-3"
+
+javascript:
+    $(function () {
+        mainNewsEntryNamespace.registrerChannel();
+    });

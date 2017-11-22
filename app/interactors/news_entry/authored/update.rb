@@ -5,8 +5,10 @@ class NewsEntry::Authored::Update
     news_entry = NewsEntry::Authored.find(context.news_entry_id)
     news_entry.update(context.params)
 
+    context.news_entry = news_entry
+
     if news_entry.persisted?
-      context.news_entry = news_entry
+      NewsEntry::BroadcastCurrentMainNews.call
     else
       context.fail!
     end

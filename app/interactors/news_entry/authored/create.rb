@@ -3,10 +3,11 @@ class NewsEntry::Authored::Create
 
   def call
     news_entry = NewsEntry::Authored.create(context.params)
+    context.news_entry = news_entry
 
     if news_entry.persisted?
-      context.news_entry = news_entry
       context.flash_message = { success: "News created successfully" }
+      NewsEntry::BroadcastCurrentMainNews.call
     else
       context.flash_message = { error: "Creation failed" }
       context.fail!

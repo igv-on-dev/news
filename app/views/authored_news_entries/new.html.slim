@@ -29,12 +29,12 @@ div class="row"
                 span class="input-group-addon"
                   span class="glyphicon glyphicon-calendar"
 
-              javascript:
-                  $(function () {
-                      $('#datetimepicker1').datetimepicker({ format: "YYYY.MM.DD HH:mm"});
-                  });
-
           - if @authored_news_entry.new_record?
             = f.submit t('create')
           - else
             = f.submit t('save')
+
+javascript:
+    $(function () {
+        $('#datetimepicker1').datetimepicker({format: "YYYY.MM.DD HH:mm"});
+    });

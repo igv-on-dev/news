@@ -4,6 +4,12 @@ class NewsEntry::Fetched::FetchFromYandex
   include Interactor
 
   def call
-    NewsEntry::Fetched.create(YandexMainNewsFetcher.current_main_news_attributes)
+    news_entry = NewsEntry::Fetched.create(YandexMainNewsFetcher.current_main_news_attributes)
+
+    if news_entry.persisted?
+      NewsEntry::BroadcastCurrentMainNews.call
+    else
+      context.fail!
+    end
   end
 end
