@@ -11,5 +11,7 @@ gem install foreman
 foreman start
 ```
 
+Вебсервер запускается на localhost:5000
+
 ## Тесты
 `bundle exec rspec`
