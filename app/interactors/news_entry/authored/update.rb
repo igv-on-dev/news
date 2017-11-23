@@ -7,11 +7,11 @@ class NewsEntry::Authored::Update
 
     context.news_entry = news_entry
 
-    if news_entry.persisted?
+    if news_entry.changed?
+      context.fail!(message: news_entry.errors.full_messages.join("; "))
+    else
       NewsEntry::BroadcastCurrentMainNewsWorker.perform_at(news_entry.unpublish_at + 15.seconds)
       NewsEntry::BroadcastCurrentMainNews.call
-    else
-      context.fail!
     end
   end
 end

@@ -5,16 +5,24 @@ class AuthoredNewsEntriesController < ApplicationController
 
   def create
     result = NewsEntry::Authored::Create.call(params: news_entry_params)
-    redirect_to admin_path, result.flash_message
+    if result.success?
+      redirect_to admin_path, success: "News created successfully"
+    else
+      @authored_news_entry = result.news_entry
+      flash[:error] = "Creation failed: #{result.message}"
+      render :new
+    end
   end
 
   def update
     result = NewsEntry::Authored::Update.call(news_entry_id: news_entry_id, params: news_entry_params)
 
     if result.success?
-      redirect_to admin_path, notice: "News updated successfully"
+      redirect_to admin_path, success: "News updated successfully"
     else
-      redirect_to admin_path, alert: "Update failed"
+      @authored_news_entry = result.news_entry
+      flash[:error] = "Update failed: #{result.message}"
+      render :new
     end
   end
 
