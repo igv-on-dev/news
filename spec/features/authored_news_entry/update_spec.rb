@@ -22,6 +22,8 @@ RSpec.feature "Update active authored news entry", type: :feature do
 
       fill_in "Title", with: updated_title
       click_on "Save"
+
+      expect(page).to have_content("News updated successfully")
     end
 
     switch_to_window(windows.first)
