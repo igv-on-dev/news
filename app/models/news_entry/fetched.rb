@@ -1,1 +1,3 @@
-class NewsEntry::Fetched < NewsEntry; end
+class NewsEntry::Fetched < NewsEntry
+  validates :published_at, presence: true
+end

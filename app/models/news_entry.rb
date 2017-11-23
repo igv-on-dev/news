@@ -1,1 +1,3 @@
-class NewsEntry < ApplicationRecord; end
+class NewsEntry < ApplicationRecord
+  validates :title, :annotation, presence: true
+end
