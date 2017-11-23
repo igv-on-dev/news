@@ -16,7 +16,7 @@ describe NewsEntry::Authored::Create do
       subject
     end
 
-    it "broadcast current main news at unpublish_at time" do
+    it "broadcast current main news" do
       expect(NewsEntry::BroadcastCurrentMainNews).to receive(:call)
       subject
     end
