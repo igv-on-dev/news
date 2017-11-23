@@ -2,12 +2,8 @@ class YandexMainNewsFetcher
   attr_reader :page_body, :main_news_attributes
 
   class << self
-    def current_main_news_attributes
-      new.current_main_news_attributes
-    end
+    delegate :current_main_news_attributes, to: :new
   end
-
-  def initialize; end
 
   def current_main_news_attributes
     fetch_news_feed_page
