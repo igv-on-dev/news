@@ -1,9 +1,8 @@
 require "capybara_helper"
 
-RSpec.feature "Update active authored news entry", type: :feature do
+feature "Update active authored news entry", type: :feature do
   let!(:news_entry) { create(:authored_news_entry).decorate }
   let(:updated_title) { "My new title" }
-
 
   it "updates content on main news page without page refreshing", js: true do
     visit root_path

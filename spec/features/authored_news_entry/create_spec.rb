@@ -1,8 +1,8 @@
 require "capybara_helper"
 
-RSpec.feature "Create authored news entry", type: :feature do
-  given!(:fetched_news_entry) { create(:fetched_news_entry) }
-  given(:attributes) { attributes_for(:authored_news_entry) }
+feature "Create authored news entry", type: :feature do
+  let!(:fetched_news_entry) { create(:fetched_news_entry) }
+  let(:attributes) { attributes_for(:authored_news_entry) }
 
   it "updates content on main news page without page refreshing", js: true do
     visit root_path
@@ -15,9 +15,9 @@ RSpec.feature "Create authored news entry", type: :feature do
     within_window new_window do
       visit admin_path
 
-      expect(find_field('Title').value).to be_empty
-      expect(find_field('Annotation').value).to be_empty
-      expect(find_field('Unpublish at').value).to be_empty
+      expect(find_field("Title").value).to be_empty
+      expect(find_field("Annotation").value).to be_empty
+      expect(find_field("Unpublish at").value).to be_empty
 
       fill_in "Title", with: attributes[:title]
       fill_in "Annotation", with: attributes[:annotation]

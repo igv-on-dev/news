@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe NewsEntryFinder do
+describe NewsEntryFinder do
   describe ".active_authored_news_entry" do
     context "when present active authored news entry" do
       let!(:active_authored_news_entry) { create(:authored_news_entry) }

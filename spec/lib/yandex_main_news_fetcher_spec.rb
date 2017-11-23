@@ -1,7 +1,7 @@
 require "rails_helper"
 require "yandex_main_news_fetcher"
 
-RSpec.describe YandexMainNewsFetcher do
+describe YandexMainNewsFetcher do
   around(:each) do |example|
     WebMock.disable_net_connect!
     example.run

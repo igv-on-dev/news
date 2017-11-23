@@ -1,7 +1,7 @@
 require "capybara_helper"
 require "yandex_main_news_fetcher"
 
-RSpec.feature "Fetch fresh news from yandex", type: :feature do
+feature "Fetch fresh news from yandex", type: :feature do
   let!(:news_entry) { create(:fetched_news_entry).decorate }
   let!(:fresh_news_attributes) do
     {
