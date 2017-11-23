@@ -11,7 +11,8 @@ describe NewsEntry::Authored::Create do
     end
 
     it "schedules NewsEntry::BroadcastCurrentMainNewsWorker at unpublish_at time" do
-      expect(NewsEntry::BroadcastCurrentMainNewsWorker).to receive(:perform_at)
+      expect(NewsEntry::BroadcastCurrentMainNewsWorker)
+        .to receive(:perform_at)
         .with(params[:unpublish_at] + 15.seconds)
       subject
     end

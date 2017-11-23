@@ -21,7 +21,7 @@ RSpec.feature "Create authored news entry", type: :feature do
 
       fill_in "Title", with: attributes[:title]
       fill_in "Annotation", with: attributes[:annotation]
-      fill_in "Unpublish at", with: attributes[:unpublish_at]
+      fill_in "Unpublish at", with: NewsEntry::AuthoredDecorator.decorate(attributes).unpublish_at
       click_on "Create"
 
       expect(page).to have_content("News created successfully")

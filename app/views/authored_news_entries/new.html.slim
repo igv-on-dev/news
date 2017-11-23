@@ -5,9 +5,9 @@ div class="row"
         i class="icon-calendar"
         h3 class="panel-title" Authored news entry
 
-      div class="panel-body"
+      div class="panel-body news_entry_authored_form"
 
-        = form_for @authored_news_entry, url: admin_path, html: { class: "form-horizontal row-border" } do |f|
+        = form_for @authored_news_entry, url: admin_path, html: { class: "form-horizontal row-border", id: "news_entry_authored_form" } do |f|
           - unless @authored_news_entry.new_record?
             = f.hidden_field :id
 
@@ -24,17 +24,60 @@ div class="row"
           div class="form-group"
             = f.label :unpublish_at, class: "col-md-2 control-label"
             div class="col-md-10"
-              div class='input-group date' id='datetimepicker1'
+              div class='input-group date' id='datetimepicker'
                 = f.text_field :unpublish_at, class: "form-control"
                 span class="input-group-addon"
                   span class="glyphicon glyphicon-calendar"
 
           - if @authored_news_entry.new_record?
-            = f.submit t('create')
+            = f.button t('create'), class: "btn btn-primary"
           - else
-            = f.submit t('save')
+            = f.submit t('save'), class: "btn btn-primary"
 
 javascript:
-    $(function () {
-        $('#datetimepicker1').datetimepicker({format: "YYYY.MM.DD HH:mm"});
+    $(document).ready(function () {
+        $('#datetimepicker')
+            .datetimepicker({format: "YYYY.MM.DD HH:mm"})
+            .on('dp.change', function (e) {
+                // Revalidate the date field
+                $('#news_entry_authored_form')
+                    .formValidation('revalidateField', 'news_entry_authored[unpublish_at]');
+            });
+
+
+        $('#news_entry_authored_form').formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                "news_entry_authored[title]": {
+                    validators: {
+                        notEmpty: {
+                            message: 'The title is required'
+                        }
+                    }
+                },
+                "news_entry_authored[annotation]": {
+                    validators: {
+                        notEmpty: {
+                            message: 'The annotation is required'
+                        }
+                    }
+                },
+                "news_entry_authored[unpublish_at]": {
+                    validators: {
+                        notEmpty: {
+                            message: 'The field with time for unpublish at is required'
+                        },
+                        date: {
+                            format: "YYYY.MM.DD HH:mm",
+                            message: 'The time unpublish at is not a valid'
+                        }
+                    }
+                }
+            }
+        });
     });

@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem 'formvalidation-rails'
 
 gem 'redis', '~> 3.0'
 gem 'sidekiq'

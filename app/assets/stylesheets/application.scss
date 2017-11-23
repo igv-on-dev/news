@@ -16,6 +16,7 @@
 @import "variables";
 @import "bootstrap-custom";
 @import 'bootstrap-datetimepicker';
+@import 'formvalidation.min';
 
 body {
   padding-top: 50px;
@@ -24,3 +25,18 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+#news_entry_authored_form .form-group .form-control-feedback,
+#news_entry_authored_form .form-group .form-control-feedback {
+  top: 0;
+  right: -15px;
+}
+#news_entry_authored_form .help-block {
+  text-align: left;
+}
+
+.panel-body.news_entry_authored_form {
+  padding: 15px 40px;
+}
+
+
