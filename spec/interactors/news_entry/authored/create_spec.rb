@@ -21,5 +21,15 @@ describe NewsEntry::Authored::Create do
       expect(NewsEntry::BroadcastCurrentMainNews).to receive(:call)
       subject
     end
+
+    context "with invalid params" do
+      let!(:params) { attributes_for(:authored_news_entry).merge(title: "") }
+
+      it "does not create NewsEntry::Authored" do
+        expect{ subject }.not_to change{ NewsEntry::Authored.count }
+        expect(subject.success?).to be false
+        expect(subject.message).to be_present
+      end
+    end
   end
 end
