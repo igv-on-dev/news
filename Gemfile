@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'webmock'
+  gem 'chromedriver-helper'
 end
 
 group :development do

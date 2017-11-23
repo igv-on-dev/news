@@ -2,6 +2,12 @@ require "rails_helper"
 require "yandex_main_news_fetcher"
 
 RSpec.describe YandexMainNewsFetcher do
+  around(:each) do |example|
+    WebMock.disable_net_connect!
+    example.run
+    WebMock.allow_net_connect!
+  end
+
   describe ".current_main_news_attributes" do
     let!(:request) do
       stub_request(:get, "https://news.yandex.ru/")
